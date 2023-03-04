@@ -1,0 +1,72 @@
+nav {
+    @include flex($align: center, $justify: space-between);
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.navLinks{
+    @include flex;
+    list-style: none;
+
+    li{    
+        @include flex($align: center);  
+        margin-right: 1rem;
+        gap: 1rem;
+
+        &:last-child{
+            margin-right: 0;
+        }
+
+        &::before{
+            display: block;
+            content: "";
+            width: $navLink-point;
+            height: $navLink-point;
+            background: $orange;
+            border-radius: 50%;
+        }
+    }
+}
+
+
+.navActions{
+    $iconSpace: 1.5rem;
+    
+    @include flex;
+    gap: $iconSpace;
+
+    img {
+        padding-right: $iconSpace;
+        border-right: solid 1px darken($white, 50%);
+    }
+
+    .navToggle{
+        @include flex($align: center);
+        background-color: transparent;
+        border: none;
+        gap: 1rem;
+        cursor: pointer;
+        
+        span{
+            color: $white;
+            text-transform: uppercase;
+        }
+
+        .navIcon {
+            @include flex(column);
+            gap: .25rem;
+            width: 28px;
+
+            .navIcon__bar{
+                width: 100%;
+                height: 3px;
+                background: $white;
+
+                &.navIcon__bar-short{
+                    width: 60%;
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,6 @@
+@mixin flex($direction: row, $align: normal, $justify: flex-start) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}

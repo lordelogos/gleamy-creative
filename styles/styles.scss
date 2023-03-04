@@ -1,5 +1,17 @@
-@import "./partials/variables";
+@import './partials/mixins';
+@import './partials/variables';
+@import './partials/base';
+@import './partials/nav';
 
 body {
     background: $black;
+    color: $white;
+    width: 100vw;
 }
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+
