@@ -12,6 +12,7 @@
     "vite": "^4.1.0"
   },
   "dependencies": {
-    "@barba/core": "^2.9.7"
+    "@barba/core": "^2.9.7",
+    "sass": "^1.58.3"
   }
 }
