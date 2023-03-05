@@ -73,7 +73,7 @@ main {
     position: absolute;
     bottom: 0%;
     width: 200vw;
-    transform: rotateZ(-15deg) translateX(-5vw);
+    transform: rotateZ(-15deg) translateX(-2%);
     transform-origin: 0% 0%;
     padding: 1rem 0;
     background: $dark-gray;
@@ -91,9 +91,11 @@ main {
 
     ul {
         $space: 2rem;
-        @include flex($align: center);
+        width: 100%;
+        @include flex($align: center, $justify: space-between);
         gap: $space;
         list-style: none;
+        animation: marqee 15s linear infinite;
 
         li{
             @include flex($align: center, $justify: center);
@@ -114,3 +116,4 @@ main {
 }
 
 // Marqee styling ends here
+

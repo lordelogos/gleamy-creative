@@ -1,3 +1,6 @@
+@use 'sass:math';
+@import './animations';
+
 nav {
     @include flex($align: center, $justify: space-between);
     width: 100%;
@@ -29,7 +32,6 @@ nav {
     }
 }
 
-
 .navActions{
     $iconSpace: 1.5rem;
 
@@ -43,6 +45,7 @@ nav {
 
     .navToggle{
         @include flex($align: center);
+        z-index: $nav-zindex + 1;
         background-color: transparent;
         border: none;
         gap: 1rem;
@@ -62,12 +65,118 @@ nav {
                 width: 100%;
                 height: 3px;
                 background: $white;
-
-                &.navIcon__bar-short{
-                    width: 60%;
-                }
+                transition: all 500ms;
             }
         }
     }
+}
+
+body[data-nav="false"] .navIcon__bar{
+    &.navIcon__bar-short{
+        width: 60% !important;
+    }
+}
+
+body[data-nav="true"] .navIcon__bar{
+    transform: rotateZ(45deg) translate(.125rem, 0);
+
+    &.navIcon__bar-short{
+        width: 100% !important;
+        transform: rotateZ(-45deg) translate(.25rem, -.25rem);
+
+    }
+}
+
+
+.navMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: lighten($orange, 5%);
+    z-index: $nav-zindex;
+    @include flex($align: end);
+    transition: 500ms;
+    transform: translateY(-100%);
+
+    ul{
+        @include flex($direction: column);
+        width: 100%;
+        height: 80%;
+        list-style: none;
+
+        $list-elems: 4;
+        li{
+            width: 100%;
+            padding: 0 2%;
+            height: math.div(100%, $list-elems);
+            border-top: solid 1px;
+            color: $black;
+            font-size: clamp(2rem, 16vh, 12rem);
+            line-height: 1;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            
+            a{
+                @include flex($align: center) ;
+                width: 100%;
+                height: 100%;
+            }
+
+            &:nth-child(even){
+                a{
+                    justify-content: end;
+                }   
+            }
+
+            .nav__marqee{
+                position: absolute;
+                top: 0;
+                left: 0;
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                background: $black;
+                transform: translate3d(0, 101%, 0);
+
+                .nav__marqee-inner-wrap{
+                    height: 100%;
+                    width: 100%;
+                    transform: translate3d(0, -101%, 0);
+                }
+
+                .nav__marqee-inner{
+                        height: 100%;
+                        width: fit-content;
+                        align-items: center;
+                        display: flex;
+                        position: relative;
+                        animation: nav-marqee 15s linear infinite;
+                        will-change: transform;
+
+                        span{
+                            white-space: nowrap;
+                            font-size: clamp(2rem, 16vh, 12rem);
+                            text-align: center;
+                            color: $white;
+                        }
+
+                        .nav__marqee-img{
+                            width: 15vw;
+                            height: 70%;
+                            margin: 0 2vw;
+                            border-radius: 5vw;
+                            background-size: cover;
+                            background-position: 50% 50%;
+                        }
+                }
+            }
+        }   
+    }
 
 }
+
+

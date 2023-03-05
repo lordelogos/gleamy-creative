@@ -1,0 +1,23 @@
+@keyframes nav-marqee {
+	100% {
+		transform: translate3d(-50%, 0, 0);
+	}
+}
+
+// banner-marqee on home page
+@keyframes marqee {
+	100% {
+		transform: translate3d(-52%, 0, 0);
+	}
+}
+
+.rotateZ{
+    animation: rotateZ 5s linear infinite;
+}
+
+
+@keyframes rotateZ {
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
