@@ -98,7 +98,6 @@ body[data-nav="true"] .navIcon__bar{
     z-index: $nav-zindex;
     @include flex($align: end);
     transition: 500ms;
-    transform: translateY(-100%);
 
     ul{
         @include flex($direction: column);
@@ -179,4 +178,13 @@ body[data-nav="true"] .navIcon__bar{
 
 }
 
+body[data-nav="false"] .navMenu {
+    opacity: 0;
+    transform: translateY(-100%) !important;
+}
+
+body[data-nav="true"] .navMenu {
+    opacity: 1;
+    transform: translateY(0%) !important;
+}
 
