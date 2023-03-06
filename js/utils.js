@@ -15,4 +15,13 @@ const distMetric = (x, y, x2, y2) => {
   return xDiff * xDiff + yDiff * yDiff;
 };
 
-export { closestEdge, distMetric };
+const delay = (n) => {
+  n = n || 2000;
+  return new Promise((done) => {
+    setTimeout(() => {
+      done();
+    }, n);
+  });
+};
+
+export { closestEdge, distMetric, delay };
