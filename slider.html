@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css"
+    />
     <link rel="stylesheet" href="/styles/styles.scss" />
     <link rel="stylesheet" href="/styles/page-styles/content.scss" />
     <meta
@@ -11,7 +15,7 @@
     />
     <title>Gleamy - creative agency | About Us</title>
   </head>
-  <body data-nav="false" data-namespace="portfolio" data-barba="wrapper">
+  <body data-nav="false" data-namespace="slider" data-barba="wrapper">
     <div class="preloader">
       <span>g</span>
       <img src="/logo.svg" alt="Gleamy creative agency logo" class="navLogo" />
@@ -243,7 +247,6 @@
       data-barba="container"
       data-barba-namespace="portfolio"
     >
-      <!-- About us section begins -->
       <main>
         <img
           src="/gleam-button.svg"
@@ -258,44 +261,73 @@
         <img src="/tags.svg" alt="Gleamy banner tags" class="banner-tag" />
         <div class="content">
           <h2>Portfolio</h2>
+
           <div class="content__container">
             <div class="bg-text">P</div>
-            <div class="content__portfolio">
-              <ul class="projects__list">
-                <li class="project__item">
-                  <div
-                    class="project__img"
-                    style="background: url(portfolio-1.jpg)"
-                  ></div>
-                  <h3>Gleamy Portfolio</h3>
-                  <p>UI/UX</p>
-                </li>
-                <li class="project__item">
-                  <div
-                    class="project__img"
-                    style="background: url(portfolio-2.jpg)"
-                  ></div>
-                  <h3>NFTs Dashboard</h3>
-                  <p>UI/UX</p>
-                </li>
-                <li class="project__item">
-                  <div
-                    class="project__img"
-                    style="background: url(portfolio-3.jpg)"
-                  ></div>
-                  <h3>Gleamy Showreel</h3>
-                  <p>UI/UX</p>
-                </li>
-              </ul>
+            <div class="content__slider">
+              <div class="swiper-container gallery-top">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div
+                      class="swiper-slide-container swiper-bg"
+                      style="background-image: url(/portfolio-1.jpg)"
+                    ></div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div
+                      class="swiper-slide-container swiper-bg"
+                      style="background-image: url(/portfolio-2.jpg)"
+                    ></div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div
+                      class="swiper-slide-container swiper-bg"
+                      style="background-image: url(/portfolio-3.jpg)"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-container gallery-thumbs">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="swiper-slide-container swiper-content">
+                      <img
+                        src="/portfolio-1.jpg"
+                        alt="Gleamy portfolio item image 1"
+                      />
+                      <h3>Gleamy Portfolio</h3>
+                      <p>UI/UX</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="swiper-slide-container swiper-content">
+                      <img
+                        src="/portfolio-2.jpg"
+                        alt="Gleamy NFT dashboard image"
+                      />
+                      <h3>NFTs Dashboard</h3>
+                      <p>UI/UX</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="swiper-slide-container swiper-content">
+                      <img src="/portfolio-3.jpg" alt="Gleamy showreel image" />
+                      <h3>Gleamy Showreel</h3>
+                      <p>UI/UX</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
             </div>
           </div>
         </div>
       </main>
-      <!-- About us section ends -->
+
       <p class="creative__stamp">The cre8tive</p>
     </div>
-
-    <!-- Marqee begins -->
     <div class="marqee">
       <ul>
         <li>Creative Design</li>
@@ -328,7 +360,7 @@
         <li>Branding</li>
       </ul>
     </div>
-    <!-- Marqee ends -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

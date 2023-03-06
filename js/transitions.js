@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import barba from "@barba/core";
 import { delay } from "./utils";
+import { DoubleImageEffect } from "./classes";
 
 const pageTransitionIn = () => {
   return gsap.fromTo(
@@ -39,12 +40,27 @@ const initPageTransitions = (navigation) => {
           done();
         },
 
+        async beforeEnter(data) {
+          if (data.next.url.path === "/portfolio.html") {
+            [...document.querySelectorAll(".project__img")].forEach(
+              (el) => new DoubleImageEffect(el)
+            );
+          }
+        },
+
         async enter(data) {
           contentLoaded(data);
         },
 
         async once(data) {
           const done = this.async();
+
+          if (data.next.url.path === "/portfolio.html") {
+            [...document.querySelectorAll(".project__img")].forEach(
+              (el) => new DoubleImageEffect(el)
+            );
+          }
+
           await delay(1000);
           contentLoaded(data);
           done();
