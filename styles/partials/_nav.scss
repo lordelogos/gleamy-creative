@@ -3,9 +3,9 @@
 
 nav {
     @include flex($align: center, $justify: space-between);
-    width: 100%;
-    height: 10vh;
-    margin: 2rem 0;
+    width: 90%;
+    height: 15vh;
+    margin:  auto;
 }
 
 .navLinks{
@@ -87,7 +87,6 @@ body[data-nav="true"] .navIcon__bar{
     }
 }
 
-
 .navMenu {
     position: fixed;
     top: 0;
@@ -96,13 +95,13 @@ body[data-nav="true"] .navIcon__bar{
     height: 100%;
     background: lighten($orange, 5%);
     z-index: $nav-zindex;
-    @include flex($align: end);
+    @include flex($align: center);
     transition: 500ms;
 
     ul{
         @include flex($direction: column);
         width: 100%;
-        height: 80%;
+        height: 60%;
         list-style: none;
 
         $list-elems: 4;
@@ -112,22 +111,20 @@ body[data-nav="true"] .navIcon__bar{
             height: math.div(100%, $list-elems);
             border-top: solid 1px;
             color: $black;
-            font-size: clamp(2rem, 16vh, 12rem);
+            font-size: clamp(2rem, 10vh, 8rem);
             line-height: 1;
             position: relative;
             overflow: hidden;
             text-transform: uppercase;
+
+            &:last-child{
+            border-bottom: solid 1px;
+            }
             
             a{
-                @include flex($align: center) ;
+                @include flex($align: center, $justify: center) ;
                 width: 100%;
                 height: 100%;
-            }
-
-            &:nth-child(even){
-                a{
-                    justify-content: end;
-                }   
             }
 
             .nav__marqee{
@@ -158,7 +155,7 @@ body[data-nav="true"] .navIcon__bar{
 
                         span{
                             white-space: nowrap;
-                            font-size: clamp(2rem, 16vh, 12rem);
+                            font-size: clamp(2rem, 10vh, 8rem);
                             text-align: center;
                             color: $white;
                         }

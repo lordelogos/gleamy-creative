@@ -15,14 +15,15 @@ body {
 .container {
     @include flex($direction: column);
     width: 90%;
-    height: 100%;
+    height: 85vh;
     margin: auto;
 }
+
 
 main {
     position: relative;
     width: 100%;
-    height: 90vh;
+    height: 100%;
     padding-bottom: 20vh;
     @include flex($align: center, $justify: start);
 
@@ -115,6 +116,14 @@ main {
     }
 }
 
+body[data-namespace="home"] .marqee {
+    display: block;
+}
+
+
+body:not([data-namespace="home"]) .marqee {
+    display: none;
+}
 // Marqee styling ends here
 
 // preloader/transition styling starts here
@@ -128,7 +137,6 @@ main {
     z-index: $nav-zindex + 2;
 
     @include flex($align: center, $justify: center);
-    display: none;
 
     span{
         position: absolute;

@@ -159,6 +159,7 @@
 
                         a:hover{
                             color: $white;
+                            
                             &::after{
                                 transform: translate(-75%, -50%) skewY(-0deg) scale(4, 2.5);
                             }
