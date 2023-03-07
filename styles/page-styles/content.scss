@@ -23,6 +23,32 @@
         line-height: 1;
         -webkit-text-stroke: 1px darken($white, 30%);
         color: transparent;
+        transform: translate3d(0, 0, 0);
+
+        span {
+            display: block;
+            position: relative;
+        }
+
+        span::before {
+            content: attr(data-letter);
+            position: absolute;
+            color: $white;
+            left: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0%;
+            -webkit-transition: width 0.5s;
+            transition: width 0.5s;
+            -webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+            transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        &:hover {
+            span::before {
+                width: 100%;
+            }
+        }
     }
 
     h2 {

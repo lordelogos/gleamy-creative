@@ -98,17 +98,6 @@ export class ProjectHover {
     this.layout();
   }
   layout() {
-    /*
-        this
-        <div class="double" style="background-image:[url]"></div>
-
-        becomes
-        <div class="double">
-            <div class="double__img" style="background-image:[url]"></div>
-            <div class="double__img" style="background-image:[url]"></div>
-        </div>
-        */
-
     // get element background-image url
     const url = getComputedStyle(this.DOM.el).backgroundImage.match(
       /url\(["']?([^"']*)["']?\)/
@@ -124,12 +113,6 @@ export class ProjectHover {
 
     this.DOM.bottom = this.DOM.el.querySelector(".double__img:first-child");
     this.DOM.top = this.DOM.el.querySelector(".double__img:last-child");
-
-    /*
-        gsap.set(this.DOM.bottom, {
-            scale: 1.4
-        });
-        */
   }
   mouseenter() {
     if (this.leaveTimeout) {
@@ -139,19 +122,19 @@ export class ProjectHover {
     this.enterTimeout = gsap
       .timeline({
         defaults: {
-          duration: 0.9,
-          ease: "expo",
+          duration: 0.8,
+          ease: "power4",
         },
       })
-      .set(this.DOM.bottom, { willChange: "filter" })
+      .set(this.DOM.bottom, { transformOrigin: "50% 50%" })
       .set(this.DOM.top, { willChange: "clip-path" })
       .fromTo(
         this.DOM.top,
         {
-          clipPath: "circle(70.7% at 50% 50%)",
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         },
         {
-          clipPath: "circle(0% at 50% 50%)",
+          clipPath: "polygon(100% 0%, 100% 0%, 0% 100%, 0% 100%)",
         },
         0
       )
@@ -159,12 +142,15 @@ export class ProjectHover {
       .fromTo(
         this.DOM.bottom,
         {
-          scale: 1,
-          filter: "brightness(80%) contrast(200%) hue-rotate(-90deg)",
+          skewX: 15,
+          scale: 2,
+          filter: "brightness(600%)",
         },
         {
-          scale: 1.3,
-          filter: "brightness(100%) contrast(100%) hue-rotate(0deg)",
+          skewX: 0,
+          scale: 1,
+          filter: "brightness(100%)",
+          scale: 1.1,
         },
         0
       );
@@ -177,16 +163,15 @@ export class ProjectHover {
     this.leaveTimeout = gsap
       .timeline({
         defaults: {
-          duration: 0.5,
-          ease: "power2.inOut",
+          duration: 0.8,
+          ease: "power4",
         },
       })
-      .set(this.DOM.bottom, { willChange: "filter" })
       .set(this.DOM.top, { willChange: "clip-path" })
       .to(
         this.DOM.top,
         {
-          clipPath: "circle(70.7% at 50% 50%)",
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         },
         0
       )
@@ -194,8 +179,13 @@ export class ProjectHover {
       .to(
         this.DOM.bottom,
         {
-          filter: "brightness(0%) contrast(400%)",
-          scale: 3.3,
+          filter: "brightness(600%)",
+          skewX: 15,
+          scale: 2,
+          onComplete: () =>
+            gsap.set(this.DOM.bottom, {
+              filter: "brightness(0%)",
+            }),
         },
         0
       );
