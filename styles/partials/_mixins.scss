@@ -4,3 +4,9 @@
     align-items: $align;
     justify-content: $justify;
 }
+
+@mixin devices($breakpoint) {
+    @media only screen and (max-width: $breakpoint) {
+        @content;
+    }
+}

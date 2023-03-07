@@ -1,8 +1,7 @@
-@import './partials/mixins';
-@import './partials/variables';
-@import './partials/base';
-@import './partials/nav';
-
+@import "./partials/mixins";
+@import "./partials/variables";
+@import "./partials/base";
+@import "./partials/nav";
 
 body {
     background: $black;
@@ -12,13 +11,20 @@ body {
     overflow: hidden;
 }
 
+@media screen and (min-width: 1000px) and (max-height: 600px) {
+    body {
+        min-height: 900px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
 .container {
     @include flex($direction: column);
     width: 90%;
-    height: 85vh;
+    height: 85%;
     margin: auto;
 }
-
 
 main {
     position: relative;
@@ -27,43 +33,104 @@ main {
     padding-bottom: 20vh;
     @include flex($align: center, $justify: start);
 
-    .gleamy-btn{
+    @include devices($sm) {
+        padding-bottom: 10vh;
+    }
+
+    .gleamy-btn {
         position: absolute;
         top: 0;
         left: 0;
+
+        @include devices($md) {
+            width: 92px;
+            height: 92px;
+        }
+
+        @include devices($md) {
+            width: 64px;
+            height: 64px;
+        }
     }
 
-    .watch-btn{
+    .watch-btn {
         position: absolute;
         bottom: 5vh;
         right: 0;
+        @include devices($md) {
+            width: 92px;
+            height: 92px;
+        }
+
+        @include devices($md) {
+            width: 64px;
+            height: 64px;
+        }
     }
 
-    .banner-tag{
+    .banner-tag {
         position: absolute;
-        top: 18%;
+        top: 50%;
         left: 0;
+        transform: translateY(-50%);
+        @include devices($md) {
+            display: none;
+        }
     }
 }
 
-.bg{
+.bg {
     position: absolute;
     top: 0;
     left: 0;
     transform: translateX(30%);
-    font-size: clamp(400px, 25vw, 450px);
+    font-size: clamp(400px, 25vw, 25vw);
     line-height: 1;
     -webkit-text-stroke: 1px darken($white, 75%);
     color: transparent;
     z-index: -1;
+
+    @include devices($lg) {
+        top: calc(50% - 20vh);
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @include devices($sm) {
+        font-size: clamp(300px, 20vw, 300px);
+        top: calc(50% - 10vh);
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 
 .banner {
     margin-left: 8%;
     font-size: 5.5rem;
     font-weight: 400;
+    width: 19ch;
 
-    span{
+    @include devices($xl) {
+        font-size: 5rem;
+    }
+
+    @include devices($lg) {
+        font-size: 4rem;
+    }
+
+    @include devices($md) {
+        font-size: 3rem;
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+
+    @include devices($sm) {
+        font-size: 2.5rem;
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+
+    span {
         color: darken($white, 50%);
     }
 }
@@ -73,7 +140,8 @@ main {
 .marqee {
     position: absolute;
     bottom: 0%;
-    width: 200vw;
+    min-width: 200vw;
+    width: max-content;
     transform: rotateZ(-15deg) translateX(-2%);
     transform-origin: 0% 0%;
     padding: 1rem 0;
@@ -81,13 +149,26 @@ main {
     color: $white;
     z-index: -1;
 
-    &.marqee-light{
+    &.marqee-light {
         z-index: -2;
         transform: rotateZ(50deg);
         left: 65%;
         bottom: 100%;
         background: $white;
         color: $black;
+
+        @include devices($md) {
+            display: none !important;
+        }
+    }
+
+    @include devices($md) {
+        padding: 8px 0;
+    }
+
+    @include devices($md) {
+        padding: 8px 0;
+        transform: rotateZ(-25deg) translateX(-2%);
     }
 
     ul {
@@ -98,19 +179,29 @@ main {
         list-style: none;
         animation: marqee 15s linear infinite;
 
-        li{
+        li {
             @include flex($align: center, $justify: center);
             gap: $space;
+            white-space: nowrap;
             font-size: 1.5rem;
             text-transform: uppercase;
 
-            &::before{
+            @include devices($sm) {
+                font-size: 14px;
+            }
+
+            &::before {
                 display: inline-block;
                 content: "";
                 width: 16px;
                 height: 16px;
                 border-radius: 50%;
                 background: $orange;
+
+                @include devices($sm) {
+                    width: 8px;
+                    height: 8px;
+                }
             }
         }
     }
@@ -120,14 +211,13 @@ body[data-namespace="home"] .marqee {
     display: block;
 }
 
-
 body:not([data-namespace="home"]) .marqee {
     display: none;
 }
 // Marqee styling ends here
 
 // preloader/transition styling starts here
-.preloader{
+.preloader {
     position: fixed;
     top: 0;
     left: 0;
@@ -138,7 +228,7 @@ body:not([data-namespace="home"]) .marqee {
 
     @include flex($align: center, $justify: center);
 
-    span{
+    span {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -148,6 +238,10 @@ body:not([data-namespace="home"]) .marqee {
         z-index: -1;
         -webkit-text-stroke: 1px darken($white, 75%);
         color: transparent;
+
+        @include devices($sm) {
+            font-size: clamp(300px, 20vw, 300px);
+        }
     }
 }
 // preloader/transition styling ends here

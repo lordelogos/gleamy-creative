@@ -1,3 +1,4 @@
+import gsap from "gsap";
 import { Menu } from "./js/classes";
 import { initPageTransitions } from "./js/transitions";
 

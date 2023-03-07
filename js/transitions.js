@@ -15,6 +15,13 @@ const contentLoaded = (data) => {
   const tl = new gsap.timeline();
   tl.to(".preloader", { y: "-100%", duration: 0.5 });
   tl.from(data.next.container, { opacity: 0 }, "-=0.5");
+  tl.fromTo(
+    ".fade-in",
+    { y: 100, opacity: 0 },
+    { y: 0, opacity: 1, stagger: 0.1 },
+    "-=0.5"
+  );
+  tl.fromTo(".opacity-in", { opacity: 0 }, { opacity: 1, stagger: 0.1 });
 };
 
 const initPageTransitions = (navigation) => {

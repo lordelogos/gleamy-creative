@@ -1,27 +1,27 @@
-@use 'sass:math';
-@import './animations';
+@use "sass:math";
+@import "./animations";
 
 nav {
     @include flex($align: center, $justify: space-between);
     width: 90%;
-    height: 15vh;
-    margin:  auto;
+    height: 15%;
+    margin: auto;
 }
 
-.navLinks{
+.navLinks {
     @include flex;
     list-style: none;
 
-    li{    
-        @include flex($align: center);  
+    li {
+        @include flex($align: center);
         margin-right: 1rem;
         gap: 1rem;
 
-        &:last-child{
+        &:last-child {
             margin-right: 0;
         }
 
-        &::before{
+        &::before {
             display: block;
             content: "";
             width: $navLink-point;
@@ -30,9 +30,30 @@ nav {
             border-radius: 50%;
         }
     }
+
+    @include devices($lg) {
+        display: none;
+    }
 }
 
-.navActions{
+.navLogo {
+    width: 206px;
+    height: auto;
+
+    @include devices($md) {
+        width: 192px;
+    }
+
+    @include devices($xs) {
+        width: 132px;
+    }
+
+    @include devices($xxs) {
+        display: none;
+    }
+}
+
+.navActions {
     $iconSpace: 1.5rem;
 
     @include flex;
@@ -41,27 +62,31 @@ nav {
     img {
         padding-right: $iconSpace;
         border-right: solid 1px darken($white, 50%);
+
+        @include devices($lg) {
+            display: none;
+        }
     }
 
-    .navToggle{
+    .navToggle {
         @include flex($align: center);
         z-index: $nav-zindex + 1;
         background-color: transparent;
         border: none;
         gap: 1rem;
         cursor: pointer;
-        
-        span{
+
+        span {
             color: $white;
             text-transform: uppercase;
         }
 
         .navIcon {
             @include flex(column);
-            gap: .25rem;
+            gap: 0.25rem;
             width: 28px;
 
-            .navIcon__bar{
+            .navIcon__bar {
                 width: 100%;
                 height: 3px;
                 background: $white;
@@ -71,19 +96,18 @@ nav {
     }
 }
 
-body[data-nav="false"] .navIcon__bar{
-    &.navIcon__bar-short{
+body[data-nav="false"] .navIcon__bar {
+    &.navIcon__bar-short {
         width: 60% !important;
     }
 }
 
-body[data-nav="true"] .navIcon__bar{
-    transform: rotateZ(45deg) translate(.125rem, 0);
+body[data-nav="true"] .navIcon__bar {
+    transform: rotateZ(45deg) translate(0.125rem, 0);
 
-    &.navIcon__bar-short{
+    &.navIcon__bar-short {
         width: 100% !important;
-        transform: rotateZ(-45deg) translate(.25rem, -.25rem);
-
+        transform: rotateZ(-45deg) translate(0.25rem, -0.25rem);
     }
 }
 
@@ -98,14 +122,14 @@ body[data-nav="true"] .navIcon__bar{
     @include flex($align: center);
     transition: 500ms;
 
-    ul{
+    ul {
         @include flex($direction: column);
         width: 100%;
         height: 60%;
         list-style: none;
 
         $list-elems: 4;
-        li{
+        li {
             width: 100%;
             padding: 0 2%;
             height: math.div(100%, $list-elems);
@@ -117,17 +141,29 @@ body[data-nav="true"] .navIcon__bar{
             overflow: hidden;
             text-transform: uppercase;
 
-            &:last-child{
-            border-bottom: solid 1px;
+            @include devices($xl) {
+                font-size: clamp(2rem, 6vh, 6rem);
             }
-            
-            a{
-                @include flex($align: center, $justify: center) ;
+
+            @include devices($sm) {
+                font-size: 3rem;
+            }
+
+            @include devices($xs) {
+                font-size: 2rem;
+            }
+
+            &:last-child {
+                border-bottom: solid 1px;
+            }
+
+            a {
+                @include flex($align: center, $justify: center);
                 width: 100%;
                 height: 100%;
             }
 
-            .nav__marqee{
+            .nav__marqee {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -138,41 +174,57 @@ body[data-nav="true"] .navIcon__bar{
                 background: $black;
                 transform: translate3d(0, 101%, 0);
 
-                .nav__marqee-inner-wrap{
+                .nav__marqee-inner-wrap {
                     height: 100%;
                     width: 100%;
                     transform: translate3d(0, -101%, 0);
                 }
 
-                .nav__marqee-inner{
-                        height: 100%;
-                        width: fit-content;
-                        align-items: center;
-                        display: flex;
-                        position: relative;
-                        animation: nav-marqee 15s linear infinite;
-                        will-change: transform;
+                .nav__marqee-inner {
+                    height: 100%;
+                    width: fit-content;
+                    align-items: center;
+                    display: flex;
+                    position: relative;
+                    animation: nav-marqee 15s linear infinite;
+                    will-change: transform;
 
-                        span{
-                            white-space: nowrap;
-                            font-size: clamp(2rem, 10vh, 8rem);
-                            text-align: center;
-                            color: $white;
+                    span {
+                        white-space: nowrap;
+                        font-size: clamp(2rem, 10vh, 8rem);
+                        text-align: center;
+                        color: $white;
+
+                        @include devices($xl) {
+                            font-size: clamp(2rem, 6vh, 6rem);
                         }
 
-                        .nav__marqee-img{
-                            width: 15vw;
-                            height: 70%;
-                            margin: 0 2vw;
-                            border-radius: 5vw;
-                            background-size: cover;
-                            background-position: 50% 50%;
+                        @include devices($sm) {
+                            font-size: 3rem;
                         }
+
+                        @include devices($xs) {
+                            font-size: 2rem;
+                        }
+                    }
+
+                    .nav__marqee-img {
+                        width: 15vw;
+                        height: 70%;
+                        margin: 0 2vw;
+                        border-radius: 5vw;
+                        background-size: cover;
+                        background-position: 50% 50%;
+
+                        @include devices($md) {
+                            width: 20vw;
+                            border-radius: 10vw;
+                        }
+                    }
                 }
             }
-        }   
+        }
     }
-
 }
 
 body[data-nav="false"] .navMenu {
@@ -184,4 +236,3 @@ body[data-nav="true"] .navMenu {
     opacity: 1;
     transform: translateY(0%) !important;
 }
-
