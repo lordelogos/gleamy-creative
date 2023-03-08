@@ -38,7 +38,7 @@ nav {
 
 .navLogo {
     width: 206px;
-    height: auto;
+    aspect-ratio: 103 / 27;
 
     @include devices($md) {
         width: 192px;
