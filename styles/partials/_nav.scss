@@ -164,61 +164,67 @@ body[data-nav="true"] .navIcon__bar {
             }
 
             .nav__marqee {
-                position: absolute;
-                top: 0;
-                left: 0;
-                overflow: hidden;
-                width: 100%;
-                height: 100%;
                 pointer-events: none;
-                background: $black;
-                transform: translate3d(0, 101%, 0);
+            }
 
-                .nav__marqee-inner-wrap {
-                    height: 100%;
+            @media (any-pointer: fine) {
+                .nav__marqee {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    overflow: hidden;
                     width: 100%;
-                    transform: translate3d(0, -101%, 0);
-                }
-
-                .nav__marqee-inner {
                     height: 100%;
-                    width: fit-content;
-                    align-items: center;
-                    display: flex;
-                    position: relative;
-                    animation: nav-marqee 15s linear infinite;
-                    will-change: transform;
+                    pointer-events: none;
+                    background: $black;
+                    transform: translate3d(0, 101%, 0);
 
-                    span {
-                        white-space: nowrap;
-                        font-size: clamp(2rem, 10vh, 8rem);
-                        text-align: center;
-                        color: $white;
-
-                        @include devices($xl) {
-                            font-size: clamp(2rem, 6vh, 6rem);
-                        }
-
-                        @include devices($sm) {
-                            font-size: 3rem;
-                        }
-
-                        @include devices($xs) {
-                            font-size: 2rem;
-                        }
+                    .nav__marqee-inner-wrap {
+                        height: 100%;
+                        width: 100%;
+                        transform: translate3d(0, -101%, 0);
                     }
 
-                    .nav__marqee-img {
-                        width: 15vw;
-                        height: 70%;
-                        margin: 0 2vw;
-                        border-radius: 5vw;
-                        background-size: cover;
-                        background-position: 50% 50%;
+                    .nav__marqee-inner {
+                        height: 100%;
+                        width: fit-content;
+                        align-items: center;
+                        display: flex;
+                        position: relative;
+                        animation: nav-marqee 15s linear infinite;
+                        will-change: transform;
 
-                        @include devices($md) {
-                            width: 20vw;
-                            border-radius: 10vw;
+                        span {
+                            white-space: nowrap;
+                            font-size: clamp(2rem, 10vh, 8rem);
+                            text-align: center;
+                            color: $white;
+
+                            @include devices($xl) {
+                                font-size: clamp(2rem, 6vh, 6rem);
+                            }
+
+                            @include devices($sm) {
+                                font-size: 3rem;
+                            }
+
+                            @include devices($xs) {
+                                font-size: 2rem;
+                            }
+                        }
+
+                        .nav__marqee-img {
+                            width: 15vw;
+                            height: 70%;
+                            margin: 0 2vw;
+                            border-radius: 5vw;
+                            background-size: cover;
+                            background-position: 50% 50%;
+
+                            @include devices($md) {
+                                width: 20vw;
+                                border-radius: 10vw;
+                            }
                         }
                     }
                 }
